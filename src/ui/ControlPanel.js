@@ -193,7 +193,6 @@ export class ControlPanel {
         let isAutoScrolling = false;
         toggleButton.addEventListener('click', () => {
             isAutoScrolling = !isAutoScrolling;
-            
             if (isAutoScrolling) {
                 toggleButton.textContent = '停止自动滚动';
                 toggleButton.style.background = '#fef3c7';

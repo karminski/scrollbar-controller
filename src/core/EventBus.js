@@ -25,9 +25,9 @@ export class EventBus {
 
         const wrappedHandler = options.once
             ? (...args) => {
-                  handler(...args);
-                  this.off(event, wrappedHandler);
-              }
+                handler(...args);
+                this.off(event, wrappedHandler);
+            }
             : handler;
 
         // 保存原始处理函数的引用，用于取消订阅

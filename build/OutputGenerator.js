@@ -91,7 +91,7 @@ class OutputGenerator {
             const vm = require('vm');
 
             // 创建一个新的上下文来检查语法
-            const context = vm.createContext({
+            vm.createContext({
                 console: console,
                 window: {},
                 document: {},

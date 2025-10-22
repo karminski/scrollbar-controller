@@ -284,9 +284,9 @@ export class LogManager {
      */
     getLogger(name) {
         if (!this.loggers.has(name)) {
-            const logger = new Logger(name, this.globalLevel);
-            logger.setEnabled(this.globalEnabled);
-            this.loggers.set(name, logger);
+            const loggerInstance = new Logger(name, this.globalLevel);
+            loggerInstance.setEnabled(this.globalEnabled);
+            this.loggers.set(name, loggerInstance);
         }
         return this.loggers.get(name);
     }
@@ -297,8 +297,8 @@ export class LogManager {
      */
     setGlobalLevel(level) {
         this.globalLevel = level;
-        this.loggers.forEach(logger => {
-            logger.setLevel(level);
+        this.loggers.forEach(loggerInstance => {
+            loggerInstance.setLevel(level);
         });
     }
 
@@ -308,8 +308,8 @@ export class LogManager {
      */
     setGlobalEnabled(enabled) {
         this.globalEnabled = enabled;
-        this.loggers.forEach(logger => {
-            logger.setEnabled(enabled);
+        this.loggers.forEach(loggerInstance => {
+            loggerInstance.setEnabled(enabled);
         });
     }
 
@@ -325,8 +325,8 @@ export class LogManager {
      * 清空所有日志记录器的历史
      */
     clearAllLogs() {
-        this.loggers.forEach(logger => {
-            logger.clearLogs();
+        this.loggers.forEach(loggerInstance => {
+            loggerInstance.clearLogs();
         });
     }
 
@@ -337,8 +337,8 @@ export class LogManager {
      */
     exportAllLogs(format = 'json') {
         const allLogs = {};
-        this.loggers.forEach((logger, name) => {
-            allLogs[name] = logger.exportLogs(format);
+        this.loggers.forEach((loggerInstance, name) => {
+            allLogs[name] = loggerInstance.exportLogs(format);
         });
         return allLogs;
     }

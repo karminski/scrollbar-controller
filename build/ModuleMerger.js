@@ -35,7 +35,6 @@ class ModuleMerger {
         this.moduleRegistry.clear();
         this.exportRegistry.clear();
         this.mergedCode = '';
-        
         // 设置入口模块路径
         this.entryModulePath = entryModulePath;
 
@@ -66,12 +65,10 @@ class ModuleMerger {
     generateWrapperStart() {
         return `(function() {
     'use strict';
-    
     // 模块系统
     const __modules = {};
     const __moduleCache = {};
     const __exports = {};
-    
     // 模块定义函数
     function __define(moduleId, factory) {
         __modules[moduleId] = factory;
@@ -82,22 +79,18 @@ class ModuleMerger {
         if (__moduleCache[moduleId]) {
             return __moduleCache[moduleId];
         }
-        
         if (!__modules[moduleId]) {
             throw new Error('Module not found: ' + moduleId);
         }
-        
+
         const module = { exports: {} };
         const exports = module.exports;
-        
         __modules[moduleId].call(exports, module, exports, __require);
-        
         __moduleCache[moduleId] = module.exports;
         return module.exports;
     }
-    
+
     // 模块定义开始
-    
 `;
     }
 
@@ -108,7 +101,6 @@ class ModuleMerger {
     generateWrapperEnd() {
         // 生成入口模块的模块ID
         const entryModuleId = this.getModuleId(this.entryModulePath);
-        
         return `
     // 启动应用程序
     try {
@@ -116,7 +108,6 @@ class ModuleMerger {
     } catch (error) {
         console.error('应用程序启动失败:', error);
     }
-    
 })();`;
     }
 
@@ -193,15 +184,16 @@ class ModuleMerger {
             let requireStatement = '';
 
             switch (importInfo.type) {
-                case 'default':
+                case 'default': {
                     // import defaultExport from 'module'
                     const defaultSpecifier = importInfo.specifiers.find(s => s.imported === 'default');
                     if (defaultSpecifier) {
                         requireStatement = `const ${defaultSpecifier.local} = require('${moduleId}').default || require('${moduleId}');`;
                     }
                     break;
+                }
 
-                case 'named':
+                case 'named': {
                     // import { named } from 'module'
                     const namedSpecifiers = importInfo.specifiers.filter(s => s.imported !== 'default');
                     if (namedSpecifiers.length > 0) {
@@ -211,14 +203,16 @@ class ModuleMerger {
                         requireStatement = `const { ${destructuring} } = require('${moduleId}');`;
                     }
                     break;
+                }
 
-                case 'namespace':
+                case 'namespace': {
                     // import * as name from 'module'
                     const namespaceSpecifier = importInfo.specifiers.find(s => s.imported === '*');
                     if (namespaceSpecifier) {
                         requireStatement = `const ${namespaceSpecifier.local} = require('${moduleId}');`;
                     }
                     break;
+                }
 
                 case 'side-effect':
                     // import 'module'
@@ -262,7 +256,7 @@ class ModuleMerger {
                     }
                     break;
 
-                case 'declaration':
+                case 'declaration': {
                     // 处理 export class/function/const/let/var/async function
                     if (exportInfo.keyword === 'async function') {
                         const pattern = new RegExp(`export\\s+async\\s+function\\s+${exportInfo.name}`, 'g');
@@ -273,6 +267,7 @@ class ModuleMerger {
                     }
                     exportStatements.push(`exports.${exportInfo.name} = ${exportInfo.name};`);
                     break;
+                }
 
                 case 're-export-all':
                     // 处理 export * from 'module' (暂时跳过，需要更复杂的处理)
@@ -298,16 +293,18 @@ class ModuleMerger {
         const source = importInfo.source.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
         switch (importInfo.type) {
-            case 'default':
+            case 'default': {
                 const defaultName = importInfo.specifiers.find(s => s.imported === 'default')?.local;
                 return new RegExp(`import\\s+${defaultName}\\s+from\\s*['"\`]${source}['"\`]`, 'g');
+            }
 
             case 'named':
                 return new RegExp(`import\\s*\\{[^}]*\\}\\s*from\\s*['"\`]${source}['"\`]`, 'g');
 
-            case 'namespace':
+            case 'namespace': {
                 const namespaceName = importInfo.specifiers.find(s => s.imported === '*')?.local;
                 return new RegExp(`import\\s*\\*\\s*as\\s+${namespaceName}\\s+from\\s*['"\`]${source}['"\`]`, 'g');
+            }
 
             case 'side-effect':
                 return new RegExp(`import\\s*['"\`]${source}['"\`]`, 'g');
@@ -325,11 +322,9 @@ class ModuleMerger {
     getModuleId(modulePath) {
         // 将路径转换为模块ID
         const srcDir = BuildUtils.resolvePath(this.config.srcDir);
-        
         // 标准化路径分隔符以确保一致性
         const normalizedModulePath = BuildUtils.normalizePath(modulePath);
         const normalizedSrcDir = BuildUtils.normalizePath(srcDir);
-        
         let moduleId = normalizedModulePath;
 
         // 如果是src目录下的文件，使用相对路径作为ID
@@ -353,7 +348,6 @@ class ModuleMerger {
      */
     resolveImportPath(importPath, currentModulePath) {
         const path = require('path');
-        
         // 使用与DependencyAnalyzer相同的路径解析逻辑
         let resolvedPath;
 
@@ -402,6 +396,7 @@ class ModuleMerger {
             line.trim() ? indent + line : line
         ).join('\n') + '\n';
     }
+
     /**
      * 获取源码映射生成器
      * @returns {SourceMapGenerator|null} 源码映射生成器

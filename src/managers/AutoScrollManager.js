@@ -285,7 +285,7 @@ export class AutoScrollManager {
     performScrollStep() {
         try {
             // 计算当前滚动位置
-            const currentPosition = window.scrollY;
+            // const currentPosition = window.scrollY;
 
             // 计算滚动距离
             const scrollDistance = this.calculateScrollDistance();

@@ -38,42 +38,37 @@ export class BrowserDetector {
                 browser.isWebkit = true;
                 const match = ua.match(/chrome\/(\d+)/);
                 if (match) browser.version = match[1];
-            }
-            // Edge (Chromium-based)
-            else if (ua.includes('edg')) {
+            } else if (ua.includes('edg')) {
+                // Edge (Chromium-based)
                 browser.name = 'edge';
                 browser.engine = 'blink';
                 browser.isBlink = true;
                 browser.isWebkit = true;
                 const match = ua.match(/edg\/(\d+)/);
                 if (match) browser.version = match[1];
-            }
-            // Firefox
-            else if (ua.includes('firefox')) {
+            } else if (ua.includes('firefox')) {
+                // Firefox
                 browser.name = 'firefox';
                 browser.engine = 'gecko';
                 browser.isGecko = true;
                 const match = ua.match(/firefox\/(\d+)/);
                 if (match) browser.version = match[1];
-            }
-            // Safari
-            else if (ua.includes('safari') && !ua.includes('chrome')) {
+            } else if (ua.includes('safari') && !ua.includes('chrome')) {
+                // Safari
                 browser.name = 'safari';
                 browser.engine = 'webkit';
                 browser.isWebkit = true;
                 const match = ua.match(/version\/(\d+)/);
                 if (match) browser.version = match[1];
-            }
-            // Internet Explorer
-            else if (ua.includes('trident') || ua.includes('msie')) {
+            } else if (ua.includes('trident') || ua.includes('msie')) {
+                // Internet Explorer
                 browser.name = 'ie';
                 browser.engine = 'trident';
                 browser.isTrident = true;
                 const match = ua.match(/(?:msie |rv:)(\d+)/);
                 if (match) browser.version = match[1];
-            }
-            // Opera
-            else if (ua.includes('opr') || ua.includes('opera')) {
+            } else if (ua.includes('opr') || ua.includes('opera')) {
+                // Opera
                 browser.name = 'opera';
                 browser.engine = 'blink';
                 browser.isBlink = true;
@@ -156,7 +151,7 @@ export class BrowserDetector {
      * @returns {boolean} 是否为现代浏览器
      */
     isModernBrowser() {
-        const version = parseInt(this.browserInfo.version);
+        const version = parseInt(this.browserInfo.version, 10);
 
         switch (this.browserInfo.name) {
             case 'chrome':

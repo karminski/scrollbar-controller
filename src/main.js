@@ -284,13 +284,13 @@ class ScrollbarControllerApp {
         });
 
         // 自动滚动状态变化通知UI
-        eventBus.on('auto-scroll:start', data => {
+        eventBus.on('auto-scroll:start', _data => {
             if (uiController && typeof uiController.updateAutoScrollState === 'function') {
                 uiController.updateAutoScrollState(true);
             }
         });
 
-        eventBus.on('auto-scroll:stop', data => {
+        eventBus.on('auto-scroll:stop', _data => {
             if (uiController && typeof uiController.updateAutoScrollState === 'function') {
                 uiController.updateAutoScrollState(false);
             }
@@ -549,7 +549,7 @@ class ScrollbarControllerApp {
         const result = { ...target };
 
         for (const key in source) {
-            if (source.hasOwnProperty(key)) {
+            if (Object.prototype.hasOwnProperty.call(source, key)) {
                 if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
                     result[key] = this._deepMerge(result[key] || {}, source[key]);
                 } else {
