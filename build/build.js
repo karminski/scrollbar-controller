@@ -42,6 +42,21 @@ class Builder {
             };
         }
 
+        // 处理其他构建选项
+        if (options.minify !== undefined) {
+            this.config.options = {
+                ...this.config.options,
+                minify: options.minify
+            };
+        }
+
+        if (options.sourcemap !== undefined) {
+            this.config.options = {
+                ...this.config.options,
+                sourcemap: options.sourcemap
+            };
+        }
+
         this.stats = {
             startTime: 0,
             endTime: 0,

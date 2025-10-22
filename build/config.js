@@ -33,10 +33,10 @@ const buildConfig = {
 
     // 构建选项
     options: {
-        minify: true,
+        minify: false,
         sourcemap: false,
-        removeComments: true,
-        preserveConsole: false,
+        removeComments: false,
+        preserveConsole: true,
         generateReport: true
     },
 
