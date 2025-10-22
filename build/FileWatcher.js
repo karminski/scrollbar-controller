@@ -3,7 +3,13 @@
  * 使用chokidar提供更可靠的文件监听功能
  */
 
-const chokidar = require('chokidar');
+let chokidar;
+try {
+    chokidar = require('chokidar');
+} catch (error) {
+    // chokidar is optional, only needed for watch mode
+    chokidar = null;
+}
 const path = require('path');
 const BuildUtils = require('./utils');
 
@@ -21,6 +27,11 @@ class FileWatcher {
      * 启动文件监听
      */
     start() {
+        if (!chokidar) {
+            BuildUtils.log('chokidar 未安装，跳过文件监听功能', 'warn');
+            return false;
+        }
+
         const watchPaths = [
             path.resolve(this.config.srcDir),
             path.resolve('build')

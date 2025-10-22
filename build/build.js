@@ -183,7 +183,12 @@ class Builder {
         this.fileWatcher = new FileWatcher(this.config, () => this.performBuild());
 
         // 启动监听
-        this.fileWatcher.start();
+        const watchStarted = this.fileWatcher.start();
+        
+        if (!watchStarted) {
+            BuildUtils.log('文件监听不可用，执行单次构建后退出', 'warn');
+            return;
+        }
 
         // 处理进程退出
         process.on('SIGINT', async() => {
