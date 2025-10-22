@@ -1,0 +1,163 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger on version tags like v1.0.0, v2.1.0, etc.
+
+env:
+  NODE_ENV: production
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: Validate release
+        run: |
+          echo "🔍 Validating release..."
+          npm run validate
+          echo "✅ Release validation passed"
+      
+      - name: Build release
+        run: |
+          echo "🔨 Building release..."
+          npm run clean
+          npm run build
+          echo "✅ Release build completed"
+      
+      - name: Prepare release assets
+        run: |
+          echo "📦 Preparing release assets..."
+          mkdir -p release-assets
+          
+          # Copy userscript
+          cp dist/scrollbar-control.user.js release-assets/
+          
+          # Create release notes
+          cat > release-assets/RELEASE_NOTES.md << EOF
+          # Scrollbar Controller ${GITHUB_REF_NAME}
+          
+          ## 📦 Installation
+          
+          1. Install a userscript manager like Tampermonkey or Greasemonkey
+          2. Click on the \`scrollbar-control.user.js\` file below
+          3. Your userscript manager should prompt you to install the script
+          
+          ## 🚀 Features
+          
+          - Three scrollbar display modes: default, always visible, and semi-transparent
+          - Auto-scroll functionality with adjustable speed
+          - Keyboard shortcuts for quick control
+          - Cross-browser compatibility
+          - Modular architecture for easy extension
+          
+          ## 🔧 Build Information
+          
+          - **Version**: ${GITHUB_REF_NAME}
+          - **Commit**: ${GITHUB_SHA}
+          - **Build Date**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          - **File Size**: $(stat -c%s dist/scrollbar-control.user.js) bytes
+          - **Lines of Code**: $(wc -l < dist/scrollbar-control.user.js)
+          
+          ## 📋 Changelog
+          
+          See the commit history for detailed changes in this release.
+          EOF
+          
+          # Create checksums
+          cd release-assets
+          sha256sum scrollbar-control.user.js > checksums.txt
+          cd ..
+          
+          echo "📋 Release assets prepared:"
+          ls -la release-assets/
+      
+      - name: Create GitHub Release
+        uses: actions/create-release@v1
+        id: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref_name }}
+          release_name: Scrollbar Controller ${{ github.ref_name }}
+          body_path: release-assets/RELEASE_NOTES.md
+          draft: false
+          prerelease: ${{ contains(github.ref_name, 'beta') || contains(github.ref_name, 'alpha') || contains(github.ref_name, 'rc') }}
+      
+      - name: Upload userscript asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: release-assets/scrollbar-control.user.js
+          asset_name: scrollbar-control.user.js
+          asset_content_type: application/javascript
+      
+      - name: Upload checksums
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: release-assets/checksums.txt
+          asset_name: checksums.txt
+          asset_content_type: text/plain
+      
+      - name: Release Summary
+        run: |
+          echo "## 🎉 Release Created Successfully" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 Release Details" >> $GITHUB_STEP_SUMMARY
+          echo "- **Version**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Release URL**: ${{ steps.create_release.outputs.html_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📋 Assets" >> $GITHUB_STEP_SUMMARY
+          echo "- \`scrollbar-control.user.js\` - Main userscript file" >> $GITHUB_STEP_SUMMARY
+          echo "- \`checksums.txt\` - SHA256 checksums for verification" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚀 Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "- Share the release with users" >> $GITHUB_STEP_SUMMARY
+          echo "- Update documentation if needed" >> $GITHUB_STEP_SUMMARY
+          echo "- Monitor for any issues or feedback" >> $GITHUB_STEP_SUMMARY
+
+  release-failure:
+    runs-on: ubuntu-latest
+    needs: create-release
+    if: failure()
+    
+    steps:
+      - name: Release Failure Summary
+        run: |
+          echo "## ❌ Release Creation Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚨 Release Issues" >> $GITHUB_STEP_SUMMARY
+          echo "The release creation process has failed. Please check the job logs for details." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔧 Common Issues" >> $GITHUB_STEP_SUMMARY
+          echo "- **Build failures**: Ensure the code builds successfully" >> $GITHUB_STEP_SUMMARY
+          echo "- **Permission issues**: Check GitHub token permissions" >> $GITHUB_STEP_SUMMARY
+          echo "- **Tag issues**: Verify the tag format and existence" >> $GITHUB_STEP_SUMMARY
+          echo "- **Asset upload**: Check file paths and permissions" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📋 Recovery Steps" >> $GITHUB_STEP_SUMMARY
+          echo "1. Review the failed job logs" >> $GITHUB_STEP_SUMMARY
+          echo "2. Fix any identified issues" >> $GITHUB_STEP_SUMMARY
+          echo "3. Delete the failed tag if necessary: \`git tag -d ${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "4. Create a new tag and push: \`git tag ${{ github.ref_name }} && git push origin ${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY

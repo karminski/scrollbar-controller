@@ -1,0 +1,123 @@
+{
+  "timestamp": "2025-10-21T03:23:16.300Z",
+  "summary": {
+    "total": 16,
+    "passed": 12,
+    "failed": 4,
+    "warnings": 0
+  },
+  "results": [
+    {
+      "category": "Environment",
+      "test": "Setup",
+      "status": "PASSED",
+      "message": "测试环境准备完成",
+      "timestamp": "2025-10-21T03:22:16.217Z"
+    },
+    {
+      "category": "Build Script",
+      "test": "File Existence",
+      "status": "PASSED",
+      "message": "构建脚本文件存在",
+      "timestamp": "2025-10-21T03:22:16.220Z"
+    },
+    {
+      "category": "Build Script",
+      "test": "Utility DependencyAnalyzer.js",
+      "status": "PASSED",
+      "message": "DependencyAnalyzer.js存在",
+      "timestamp": "2025-10-21T03:22:16.220Z"
+    },
+    {
+      "category": "Build Script",
+      "test": "Utility ModuleMerger.js",
+      "status": "PASSED",
+      "message": "ModuleMerger.js存在",
+      "timestamp": "2025-10-21T03:22:16.220Z"
+    },
+    {
+      "category": "Build Script",
+      "test": "Utility OutputGenerator.js",
+      "status": "PASSED",
+      "message": "OutputGenerator.js存在",
+      "timestamp": "2025-10-21T03:22:16.220Z"
+    },
+    {
+      "category": "Build Script",
+      "test": "Utility template.js",
+      "status": "PASSED",
+      "message": "template.js存在",
+      "timestamp": "2025-10-21T03:22:16.220Z"
+    },
+    {
+      "category": "Build Script",
+      "test": "Utility utils.js",
+      "status": "PASSED",
+      "message": "utils.js存在",
+      "timestamp": "2025-10-21T03:22:16.220Z"
+    },
+    {
+      "category": "Dependency Analysis",
+      "test": "Basic Analysis",
+      "status": "FAILED",
+      "message": "Cannot read properties of undefined (reading 'resolve')",
+      "timestamp": "2025-10-21T03:22:16.243Z"
+    },
+    {
+      "category": "Module Merging",
+      "test": "Basic Merging",
+      "status": "FAILED",
+      "message": "Cannot read properties of undefined (reading 'options')",
+      "timestamp": "2025-10-21T03:22:16.247Z"
+    },
+    {
+      "category": "Build Output",
+      "test": "Build Process",
+      "status": "FAILED",
+      "message": "spawnSync C:\\Windows\\system32\\cmd.exe ETIMEDOUT",
+      "timestamp": "2025-10-21T03:22:46.261Z"
+    },
+    {
+      "category": "Dev Build",
+      "test": "Dev Command",
+      "status": "FAILED",
+      "message": "spawnSync C:\\Windows\\system32\\cmd.exe ETIMEDOUT",
+      "timestamp": "2025-10-21T03:23:16.286Z"
+    },
+    {
+      "category": "Build Commands",
+      "test": "Script build",
+      "status": "PASSED",
+      "message": "build命令存在",
+      "timestamp": "2025-10-21T03:23:16.288Z"
+    },
+    {
+      "category": "Build Commands",
+      "test": "Script build:dev",
+      "status": "PASSED",
+      "message": "build:dev命令存在",
+      "timestamp": "2025-10-21T03:23:16.288Z"
+    },
+    {
+      "category": "Build Commands",
+      "test": "Script build:watch",
+      "status": "PASSED",
+      "message": "build:watch命令存在",
+      "timestamp": "2025-10-21T03:23:16.288Z"
+    },
+    {
+      "category": "Build Commands",
+      "test": "Script clean",
+      "status": "PASSED",
+      "message": "clean命令存在",
+      "timestamp": "2025-10-21T03:23:16.288Z"
+    },
+    {
+      "category": "Environment",
+      "test": "Cleanup",
+      "status": "PASSED",
+      "message": "测试环境清理完成",
+      "timestamp": "2025-10-21T03:23:16.294Z"
+    }
+  ]
+}

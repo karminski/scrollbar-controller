@@ -1,0 +1,129 @@
+{
+  "timestamp": "2025-10-21T03:20:38.762Z",
+  "summary": {
+    "total": 17,
+    "passed": 17,
+    "failed": 0
+  },
+  "results": [
+    {
+      "category": "Build Output",
+      "test": "File Existence",
+      "status": "PASSED",
+      "message": "文件大小: 217148 bytes",
+      "timestamp": "2025-10-21T03:20:38.746Z"
+    },
+    {
+      "category": "Build Structure",
+      "test": "UserScript Header",
+      "status": "PASSED",
+      "message": "油猴脚本头部正确",
+      "timestamp": "2025-10-21T03:20:38.749Z"
+    },
+    {
+      "category": "Build Structure",
+      "test": "Module System",
+      "status": "PASSED",
+      "message": "模块系统存在",
+      "timestamp": "2025-10-21T03:20:38.749Z"
+    },
+    {
+      "category": "Build Structure",
+      "test": "Module EventBus",
+      "status": "PASSED",
+      "message": "EventBus模块存在",
+      "timestamp": "2025-10-21T03:20:38.749Z"
+    },
+    {
+      "category": "Build Structure",
+      "test": "Module Application",
+      "status": "PASSED",
+      "message": "Application模块存在",
+      "timestamp": "2025-10-21T03:20:38.749Z"
+    },
+    {
+      "category": "Build Structure",
+      "test": "Module PluginManager",
+      "status": "PASSED",
+      "message": "PluginManager模块存在",
+      "timestamp": "2025-10-21T03:20:38.749Z"
+    },
+    {
+      "category": "Build Structure",
+      "test": "Module StyleManager",
+      "status": "PASSED",
+      "message": "StyleManager模块存在",
+      "timestamp": "2025-10-21T03:20:38.749Z"
+    },
+    {
+      "category": "Build Structure",
+      "test": "Module AutoScrollManager",
+      "status": "PASSED",
+      "message": "AutoScrollManager模块存在",
+      "timestamp": "2025-10-21T03:20:38.749Z"
+    },
+    {
+      "category": "Build Structure",
+      "test": "Module UIController",
+      "status": "PASSED",
+      "message": "UIController模块存在",
+      "timestamp": "2025-10-21T03:20:38.749Z"
+    },
+    {
+      "category": "Script Syntax",
+      "test": "JavaScript Parsing",
+      "status": "PASSED",
+      "message": "JavaScript语法正确",
+      "timestamp": "2025-10-21T03:20:38.753Z"
+    },
+    {
+      "category": "Module System",
+      "test": "Module Definitions",
+      "status": "PASSED",
+      "message": "找到14个模块定义",
+      "timestamp": "2025-10-21T03:20:38.755Z"
+    },
+    {
+      "category": "Module System",
+      "test": "Main Entry",
+      "status": "PASSED",
+      "message": "主入口存在",
+      "timestamp": "2025-10-21T03:20:38.755Z"
+    },
+    {
+      "category": "Core Functionality",
+      "test": "Event System",
+      "status": "PASSED",
+      "message": "事件系统功能完整",
+      "timestamp": "2025-10-21T03:20:38.757Z"
+    },
+    {
+      "category": "Core Functionality",
+      "test": "Style Management",
+      "status": "PASSED",
+      "message": "样式管理功能存在",
+      "timestamp": "2025-10-21T03:20:38.757Z"
+    },
+    {
+      "category": "Core Functionality",
+      "test": "Auto Scroll",
+      "status": "PASSED",
+      "message": "自动滚动功能存在",
+      "timestamp": "2025-10-21T03:20:38.758Z"
+    },
+    {
+      "category": "Core Functionality",
+      "test": "UI Control",
+      "status": "PASSED",
+      "message": "UI控制功能存在",
+      "timestamp": "2025-10-21T03:20:38.758Z"
+    },
+    {
+      "category": "Core Functionality",
+      "test": "Keyboard Handling",
+      "status": "PASSED",
+      "message": "键盘处理功能存在",
+      "timestamp": "2025-10-21T03:20:38.758Z"
+    }
+  ]
+}

@@ -1,0 +1,1215 @@
+{
+  "timestamp": "2025-10-21T03:23:59.054Z",
+  "summary": {
+    "total": 172,
+    "passed": 141,
+    "failed": 0,
+    "warnings": 31
+  },
+  "results": [
+    {
+      "category": "Workflow Files",
+      "test": "Directory Existence",
+      "status": "PASSED",
+      "message": ".github/workflows目录存在",
+      "timestamp": "2025-10-21T03:23:59.034Z"
+    },
+    {
+      "category": "Workflow Files",
+      "test": "File Count",
+      "status": "PASSED",
+      "message": "找到4个工作流文件",
+      "timestamp": "2025-10-21T03:23:59.035Z"
+    },
+    {
+      "category": "Workflow Files",
+      "test": "YAML Syntax - build.yml",
+      "status": "PASSED",
+      "message": "build.yml语法正确",
+      "timestamp": "2025-10-21T03:23:59.035Z"
+    },
+    {
+      "category": "Workflow Files",
+      "test": "YAML Syntax - pr-check.yml",
+      "status": "PASSED",
+      "message": "pr-check.yml语法正确",
+      "timestamp": "2025-10-21T03:23:59.036Z"
+    },
+    {
+      "category": "Workflow Files",
+      "test": "YAML Syntax - release.yml",
+      "status": "PASSED",
+      "message": "release.yml语法正确",
+      "timestamp": "2025-10-21T03:23:59.036Z"
+    },
+    {
+      "category": "Workflow Files",
+      "test": "YAML Syntax - status.yml",
+      "status": "PASSED",
+      "message": "status.yml语法正确",
+      "timestamp": "2025-10-21T03:23:59.036Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Name - build.yml",
+      "status": "PASSED",
+      "message": "工作流名称: Build Userscript",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Triggers - build.yml",
+      "status": "PASSED",
+      "message": "工作流触发器配置正确",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Jobs - build.yml",
+      "status": "PASSED",
+      "message": "包含18个作业",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - build",
+      "status": "PASSED",
+      "message": "build包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - build",
+      "status": "PASSED",
+      "message": "build包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - build",
+      "status": "PASSED",
+      "message": "build包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - strategy",
+      "status": "PASSED",
+      "message": "strategy包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - strategy",
+      "status": "PASSED",
+      "message": "strategy包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - strategy",
+      "status": "PASSED",
+      "message": "strategy包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - matrix",
+      "status": "PASSED",
+      "message": "matrix包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - matrix",
+      "status": "PASSED",
+      "message": "matrix包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - matrix",
+      "status": "PASSED",
+      "message": "matrix包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - steps",
+      "status": "PASSED",
+      "message": "steps包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - steps",
+      "status": "PASSED",
+      "message": "steps包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - steps",
+      "status": "PASSED",
+      "message": "steps包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - uses",
+      "status": "PASSED",
+      "message": "uses包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - uses",
+      "status": "PASSED",
+      "message": "uses包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - uses",
+      "status": "PASSED",
+      "message": "uses包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - with",
+      "status": "PASSED",
+      "message": "with包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - with",
+      "status": "PASSED",
+      "message": "with包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - with",
+      "status": "PASSED",
+      "message": "with包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - cache",
+      "status": "PASSED",
+      "message": "cache包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - cache",
+      "status": "PASSED",
+      "message": "cache包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - cache",
+      "status": "PASSED",
+      "message": "cache包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - run",
+      "status": "PASSED",
+      "message": "run包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - run",
+      "status": "PASSED",
+      "message": "run包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - run",
+      "status": "PASSED",
+      "message": "run包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - if",
+      "status": "PASSED",
+      "message": "if包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - if",
+      "status": "PASSED",
+      "message": "if包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - if",
+      "status": "PASSED",
+      "message": "if包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - name",
+      "status": "PASSED",
+      "message": "name包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - name",
+      "status": "PASSED",
+      "message": "name包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - name",
+      "status": "PASSED",
+      "message": "name包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - path",
+      "status": "PASSED",
+      "message": "path包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - path",
+      "status": "PASSED",
+      "message": "path包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - path",
+      "status": "PASSED",
+      "message": "path包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - release",
+      "status": "PASSED",
+      "message": "release包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - release",
+      "status": "PASSED",
+      "message": "release包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - release",
+      "status": "PASSED",
+      "message": "release包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - needs",
+      "status": "PASSED",
+      "message": "needs包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - needs",
+      "status": "PASSED",
+      "message": "needs包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - needs",
+      "status": "PASSED",
+      "message": "needs包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - pattern",
+      "status": "PASSED",
+      "message": "pattern包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - pattern",
+      "status": "PASSED",
+      "message": "pattern包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - pattern",
+      "status": "PASSED",
+      "message": "pattern包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - Commit",
+      "status": "PASSED",
+      "message": "Commit包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - Commit",
+      "status": "PASSED",
+      "message": "Commit包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - Commit",
+      "status": "PASSED",
+      "message": "Commit包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - Branch",
+      "status": "PASSED",
+      "message": "Branch包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - Branch",
+      "status": "PASSED",
+      "message": "Branch包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - Branch",
+      "status": "PASSED",
+      "message": "Branch包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - Actor",
+      "status": "PASSED",
+      "message": "Actor包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - Actor",
+      "status": "PASSED",
+      "message": "Actor包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - Actor",
+      "status": "PASSED",
+      "message": "Actor包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - Files",
+      "status": "PASSED",
+      "message": "Files包含2个步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - Files",
+      "status": "PASSED",
+      "message": "Files包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - Files",
+      "status": "PASSED",
+      "message": "Files包含产物上传",
+      "timestamp": "2025-10-21T03:23:59.037Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Name - pr-check.yml",
+      "status": "PASSED",
+      "message": "工作流名称: Pull Request Check",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Triggers - pr-check.yml",
+      "status": "PASSED",
+      "message": "工作流触发器配置正确",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Jobs - pr-check.yml",
+      "status": "PASSED",
+      "message": "包含7个作业",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - steps",
+      "status": "PASSED",
+      "message": "steps包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - steps",
+      "status": "PASSED",
+      "message": "steps包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - steps",
+      "status": "WARNING",
+      "message": "steps可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - uses",
+      "status": "PASSED",
+      "message": "uses包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - uses",
+      "status": "PASSED",
+      "message": "uses包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - uses",
+      "status": "WARNING",
+      "message": "uses可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - with",
+      "status": "PASSED",
+      "message": "with包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - with",
+      "status": "PASSED",
+      "message": "with包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - with",
+      "status": "WARNING",
+      "message": "with可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - cache",
+      "status": "PASSED",
+      "message": "cache包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - cache",
+      "status": "PASSED",
+      "message": "cache包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - cache",
+      "status": "WARNING",
+      "message": "cache可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - run",
+      "status": "PASSED",
+      "message": "run包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - run",
+      "status": "PASSED",
+      "message": "run包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - run",
+      "status": "WARNING",
+      "message": "run可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - needs",
+      "status": "PASSED",
+      "message": "needs包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - needs",
+      "status": "PASSED",
+      "message": "needs包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - needs",
+      "status": "WARNING",
+      "message": "needs可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - if",
+      "status": "PASSED",
+      "message": "if包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - if",
+      "status": "PASSED",
+      "message": "if包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - if",
+      "status": "WARNING",
+      "message": "if可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Name - release.yml",
+      "status": "PASSED",
+      "message": "工作流名称: Release",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Triggers - release.yml",
+      "status": "PASSED",
+      "message": "工作流触发器配置正确",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Jobs - release.yml",
+      "status": "PASSED",
+      "message": "包含19个作业",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - steps",
+      "status": "PASSED",
+      "message": "steps包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - steps",
+      "status": "PASSED",
+      "message": "steps包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - steps",
+      "status": "WARNING",
+      "message": "steps可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - uses",
+      "status": "PASSED",
+      "message": "uses包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - uses",
+      "status": "PASSED",
+      "message": "uses包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - uses",
+      "status": "WARNING",
+      "message": "uses可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - with",
+      "status": "PASSED",
+      "message": "with包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - with",
+      "status": "PASSED",
+      "message": "with包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - with",
+      "status": "WARNING",
+      "message": "with可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - cache",
+      "status": "PASSED",
+      "message": "cache包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - cache",
+      "status": "PASSED",
+      "message": "cache包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - cache",
+      "status": "WARNING",
+      "message": "cache可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - run",
+      "status": "PASSED",
+      "message": "run包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - run",
+      "status": "PASSED",
+      "message": "run包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - run",
+      "status": "WARNING",
+      "message": "run可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - id",
+      "status": "PASSED",
+      "message": "id包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - id",
+      "status": "PASSED",
+      "message": "id包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - id",
+      "status": "WARNING",
+      "message": "id可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - env",
+      "status": "PASSED",
+      "message": "env包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - env",
+      "status": "PASSED",
+      "message": "env包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - env",
+      "status": "WARNING",
+      "message": "env可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - GITHUB_TOKEN",
+      "status": "PASSED",
+      "message": "GITHUB_TOKEN包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - GITHUB_TOKEN",
+      "status": "PASSED",
+      "message": "GITHUB_TOKEN包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - GITHUB_TOKEN",
+      "status": "WARNING",
+      "message": "GITHUB_TOKEN可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - tag_name",
+      "status": "PASSED",
+      "message": "tag_name包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - tag_name",
+      "status": "PASSED",
+      "message": "tag_name包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - tag_name",
+      "status": "WARNING",
+      "message": "tag_name可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - release_name",
+      "status": "PASSED",
+      "message": "release_name包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - release_name",
+      "status": "PASSED",
+      "message": "release_name包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - release_name",
+      "status": "WARNING",
+      "message": "release_name可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - body_path",
+      "status": "PASSED",
+      "message": "body_path包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - body_path",
+      "status": "PASSED",
+      "message": "body_path包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - body_path",
+      "status": "WARNING",
+      "message": "body_path可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - draft",
+      "status": "PASSED",
+      "message": "draft包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - draft",
+      "status": "PASSED",
+      "message": "draft包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - draft",
+      "status": "WARNING",
+      "message": "draft可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - prerelease",
+      "status": "PASSED",
+      "message": "prerelease包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - prerelease",
+      "status": "PASSED",
+      "message": "prerelease包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - prerelease",
+      "status": "WARNING",
+      "message": "prerelease可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - upload_url",
+      "status": "PASSED",
+      "message": "upload_url包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - upload_url",
+      "status": "PASSED",
+      "message": "upload_url包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - upload_url",
+      "status": "WARNING",
+      "message": "upload_url可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - asset_path",
+      "status": "PASSED",
+      "message": "asset_path包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - asset_path",
+      "status": "PASSED",
+      "message": "asset_path包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - asset_path",
+      "status": "WARNING",
+      "message": "asset_path可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - asset_name",
+      "status": "PASSED",
+      "message": "asset_name包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - asset_name",
+      "status": "PASSED",
+      "message": "asset_name包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - asset_name",
+      "status": "WARNING",
+      "message": "asset_name可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - asset_content_type",
+      "status": "PASSED",
+      "message": "asset_content_type包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - asset_content_type",
+      "status": "PASSED",
+      "message": "asset_content_type包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - asset_content_type",
+      "status": "WARNING",
+      "message": "asset_content_type可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - needs",
+      "status": "PASSED",
+      "message": "needs包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - needs",
+      "status": "PASSED",
+      "message": "needs包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - needs",
+      "status": "WARNING",
+      "message": "needs可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - if",
+      "status": "PASSED",
+      "message": "if包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - if",
+      "status": "PASSED",
+      "message": "if包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - if",
+      "status": "WARNING",
+      "message": "if可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Name - status.yml",
+      "status": "PASSED",
+      "message": "工作流名称: Status",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Triggers - status.yml",
+      "status": "PASSED",
+      "message": "工作流触发器配置正确",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Jobs - status.yml",
+      "status": "PASSED",
+      "message": "包含5个作业",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - steps",
+      "status": "PASSED",
+      "message": "steps包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - steps",
+      "status": "PASSED",
+      "message": "steps包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - steps",
+      "status": "WARNING",
+      "message": "steps可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - uses",
+      "status": "PASSED",
+      "message": "uses包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - uses",
+      "status": "PASSED",
+      "message": "uses包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - uses",
+      "status": "WARNING",
+      "message": "uses可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - with",
+      "status": "PASSED",
+      "message": "with包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - with",
+      "status": "PASSED",
+      "message": "with包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - with",
+      "status": "WARNING",
+      "message": "with可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - cache",
+      "status": "PASSED",
+      "message": "cache包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - cache",
+      "status": "PASSED",
+      "message": "cache包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - cache",
+      "status": "WARNING",
+      "message": "cache可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Steps - run",
+      "status": "PASSED",
+      "message": "run包含1个步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Build Step - run",
+      "status": "PASSED",
+      "message": "run包含构建步骤",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Workflow Config",
+      "test": "Artifact Upload - run",
+      "status": "WARNING",
+      "message": "run可能缺少产物上传",
+      "timestamp": "2025-10-21T03:23:59.038Z"
+    },
+    {
+      "category": "Build Integration",
+      "test": "Build Script",
+      "status": "PASSED",
+      "message": "package.json包含构建脚本",
+      "timestamp": "2025-10-21T03:23:59.039Z"
+    },
+    {
+      "category": "Build Integration",
+      "test": "Build Script Path",
+      "status": "PASSED",
+      "message": "构建脚本路径正确",
+      "timestamp": "2025-10-21T03:23:59.039Z"
+    },
+    {
+      "category": "Build Integration",
+      "test": "Script test",
+      "status": "PASSED",
+      "message": "test脚本存在",
+      "timestamp": "2025-10-21T03:23:59.039Z"
+    },
+    {
+      "category": "Build Integration",
+      "test": "Script lint",
+      "status": "PASSED",
+      "message": "lint脚本存在",
+      "timestamp": "2025-10-21T03:23:59.039Z"
+    },
+    {
+      "category": "Build Integration",
+      "test": "Script clean",
+      "status": "PASSED",
+      "message": "clean脚本存在",
+      "timestamp": "2025-10-21T03:23:59.039Z"
+    },
+    {
+      "category": "Build Integration",
+      "test": "Build Script File",
+      "status": "PASSED",
+      "message": "构建脚本文件存在",
+      "timestamp": "2025-10-21T03:23:59.039Z"
+    },
+    {
+      "category": "Build Integration",
+      "test": "Build Script Export",
+      "status": "PASSED",
+      "message": "构建脚本可导出",
+      "timestamp": "2025-10-21T03:23:59.039Z"
+    }
+  ]
+}

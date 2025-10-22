@@ -1,0 +1,235 @@
+{
+  "timestamp": "2025-10-21T03:34:26.675Z",
+  "summary": {
+    "total": 32,
+    "passed": 31,
+    "failed": 0,
+    "warnings": 1
+  },
+  "results": [
+    {
+      "category": "Environment",
+      "test": "Setup",
+      "status": "PASSED",
+      "message": "扩展系统测试环境准备完成",
+      "timestamp": "2025-10-21T03:34:26.664Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "EventBus.on",
+      "status": "PASSED",
+      "message": "EventBus包含on方法",
+      "timestamp": "2025-10-21T03:34:26.666Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "EventBus.off",
+      "status": "PASSED",
+      "message": "EventBus包含off方法",
+      "timestamp": "2025-10-21T03:34:26.666Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "EventBus.emit",
+      "status": "PASSED",
+      "message": "EventBus包含emit方法",
+      "timestamp": "2025-10-21T03:34:26.667Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "EventBus.once",
+      "status": "PASSED",
+      "message": "EventBus包含once方法",
+      "timestamp": "2025-10-21T03:34:26.667Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "EventBus Error Handling",
+      "status": "PASSED",
+      "message": "EventBus包含错误处理",
+      "timestamp": "2025-10-21T03:34:26.667Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "PluginManager.registerPlugin",
+      "status": "PASSED",
+      "message": "PluginManager包含registerPlugin方法",
+      "timestamp": "2025-10-21T03:34:26.667Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "PluginManager.unregisterPlugin",
+      "status": "PASSED",
+      "message": "PluginManager包含unregisterPlugin方法",
+      "timestamp": "2025-10-21T03:34:26.667Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "PluginManager.getPlugin",
+      "status": "PASSED",
+      "message": "PluginManager包含getPlugin方法",
+      "timestamp": "2025-10-21T03:34:26.667Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "PluginManager.loadExtensions",
+      "status": "PASSED",
+      "message": "PluginManager包含loadExtensions方法",
+      "timestamp": "2025-10-21T03:34:26.667Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "Plugin Lifecycle",
+      "status": "PASSED",
+      "message": "PluginManager支持插件生命周期",
+      "timestamp": "2025-10-21T03:34:26.667Z"
+    },
+    {
+      "category": "Core Components",
+      "test": "Application Plugin Support",
+      "status": "PASSED",
+      "message": "Application支持插件系统",
+      "timestamp": "2025-10-21T03:34:26.667Z"
+    },
+    {
+      "category": "Event System",
+      "test": "Basic Pub/Sub",
+      "status": "PASSED",
+      "message": "基本发布订阅功能正常",
+      "timestamp": "2025-10-21T03:34:26.668Z"
+    },
+    {
+      "category": "Event System",
+      "test": "Multiple Listeners",
+      "status": "PASSED",
+      "message": "多监听器功能正常",
+      "timestamp": "2025-10-21T03:34:26.668Z"
+    },
+    {
+      "category": "Event System",
+      "test": "Unsubscribe",
+      "status": "PASSED",
+      "message": "取消订阅功能正常",
+      "timestamp": "2025-10-21T03:34:26.668Z"
+    },
+    {
+      "category": "Event System",
+      "test": "Once Listener",
+      "status": "PASSED",
+      "message": "一次性监听器功能正常",
+      "timestamp": "2025-10-21T03:34:26.668Z"
+    },
+    {
+      "category": "Plugin Manager",
+      "test": "Plugin Registration",
+      "status": "PASSED",
+      "message": "插件注册功能正常",
+      "timestamp": "2025-10-21T03:34:26.668Z"
+    },
+    {
+      "category": "Plugin Manager",
+      "test": "Plugin Retrieval",
+      "status": "PASSED",
+      "message": "插件获取功能正常",
+      "timestamp": "2025-10-21T03:34:26.668Z"
+    },
+    {
+      "category": "Plugin Manager",
+      "test": "Plugin Initialization",
+      "status": "PASSED",
+      "message": "插件初始化功能正常",
+      "timestamp": "2025-10-21T03:34:26.668Z"
+    },
+    {
+      "category": "Plugin Manager",
+      "test": "Plugin Unregistration",
+      "status": "PASSED",
+      "message": "插件卸载功能正常",
+      "timestamp": "2025-10-21T03:34:26.668Z"
+    },
+    {
+      "category": "Plugin Manager",
+      "test": "Plugin Destruction",
+      "status": "PASSED",
+      "message": "插件销毁功能正常",
+      "timestamp": "2025-10-21T03:34:26.668Z"
+    },
+    {
+      "category": "Extension Interfaces",
+      "test": "Extensions Directory",
+      "status": "PASSED",
+      "message": "扩展目录存在",
+      "timestamp": "2025-10-21T03:34:26.669Z"
+    },
+    {
+      "category": "Extension Interfaces",
+      "test": "Extension Guide",
+      "status": "PASSED",
+      "message": "扩展开发指南存在",
+      "timestamp": "2025-10-21T03:34:26.669Z"
+    },
+    {
+      "category": "Extension Interfaces",
+      "test": "Extension Points",
+      "status": "PASSED",
+      "message": "扩展点定义存在",
+      "timestamp": "2025-10-21T03:34:26.669Z"
+    },
+    {
+      "category": "Extension Interfaces",
+      "test": "Event Types",
+      "status": "PASSED",
+      "message": "事件类型定义存在",
+      "timestamp": "2025-10-21T03:34:26.669Z"
+    },
+    {
+      "category": "Extension Interfaces",
+      "test": "Extension Documentation",
+      "status": "PASSED",
+      "message": "找到1个扩展相关文档",
+      "timestamp": "2025-10-21T03:34:26.669Z"
+    },
+    {
+      "category": "Extension Examples",
+      "test": "Basic Structure",
+      "status": "PASSED",
+      "message": "示例扩展基本结构正确",
+      "timestamp": "2025-10-21T03:34:26.670Z"
+    },
+    {
+      "category": "Extension Examples",
+      "test": "Initialize Method",
+      "status": "PASSED",
+      "message": "示例扩展包含初始化方法",
+      "timestamp": "2025-10-21T03:34:26.670Z"
+    },
+    {
+      "category": "Extension Examples",
+      "test": "Destroy Method",
+      "status": "PASSED",
+      "message": "示例扩展包含销毁方法",
+      "timestamp": "2025-10-21T03:34:26.670Z"
+    },
+    {
+      "category": "Extension Examples",
+      "test": "API Interface",
+      "status": "PASSED",
+      "message": "示例扩展提供API接口",
+      "timestamp": "2025-10-21T03:34:26.670Z"
+    },
+    {
+      "category": "Extension Examples",
+      "test": "Documentation Quality",
+      "status": "WARNING",
+      "message": "扩展文档可能不够完整（1/4）",
+      "timestamp": "2025-10-21T03:34:26.670Z"
+    },
+    {
+      "category": "Environment",
+      "test": "Cleanup",
+      "status": "PASSED",
+      "message": "扩展系统测试环境清理完成",
+      "timestamp": "2025-10-21T03:34:26.671Z"
+    }
+  ]
+}

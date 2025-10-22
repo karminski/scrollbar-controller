@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>控制面板宽度测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            height: 200vh; /* 创建滚动条 */
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+        }
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+        .slider-demo {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        .slider-demo input[type="range"] {
+            width: 100%;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>滚动条控制面板宽度测试</h1>
+        
+        <div class="test-info">
+            <h3>测试说明</h3>
+            <p>此页面用于测试修复后的控制面板宽度。面板宽度已从 200px 增加到 280px，并添加了滑块支持。</p>
+            <ul>
+                <li>面板宽度：280px（原来200px）</li>
+                <li>最小宽度：280px</li>
+                <li>最大宽度：320px</li>
+                <li>添加了 overflow: visible 确保内容不被裁剪</li>
+                <li>新增了滑块控件创建方法</li>
+            </ul>
+        </div>
+
+        <div class="slider-demo">
+            <h3>滑块示例（模拟面板中的滑块）</h3>
+            <p>这些滑块展示了在280px宽度下的显示效果：</p>
+            
+            <label>滚动速度控制：</label>
+            <input type="range" min="1" max="10" value="5" id="speed-slider">
+            <span id="speed-value">5</span>
+            
+            <br><br>
+            
+            <label>透明度控制：</label>
+            <input type="range" min="0" max="100" value="80" id="opacity-slider">
+            <span id="opacity-value">80%</span>
+            
+            <br><br>
+            
+            <label>延迟时间控制：</label>
+            <input type="range" min="100" max="5000" value="1000" step="100" id="delay-slider">
+            <span id="delay-value">1000ms</span>
+        </div>
+
+        <h2>修改内容</h2>
+        <ol>
+            <li><strong>面板宽度增加</strong>：从200px增加到280px，确保滑块有足够空间</li>
+            <li><strong>添加最小/最大宽度</strong>：min-width: 280px, max-width: 320px</li>
+            <li><strong>修复溢出问题</strong>：添加 overflow: visible 和 box-sizing: border-box</li>
+            <li><strong>容器样式优化</strong>：选项容器和按钮都设置了 width: 100% 和 box-sizing: border-box</li>
+            <li><strong>新增滑块方法</strong>：添加了 createSliderControl() 方法用于创建滑块控件</li>
+            <li><strong>修复构建脚本</strong>：修复了构建时自动进入监听模式的问题</li>
+        </ol>
+
+        <h2>使用方法</h2>
+        <p>1. 点击右下角的紫色圆点打开控制面板</p>
+        <p>2. 面板现在有足够的宽度容纳滑块控件</p>
+        <p>3. 如需添加滑块，可以调用新的 createSliderControl() 方法</p>
+
+        <h2>构建脚本修复</h2>
+        <div class="test-info">
+            <h3>问题原因</h3>
+            <p>构建脚本在判断监听模式时，只检查了 <code>this.config.watch</code> 是否存在，而没有检查 <code>enabled</code> 属性。</p>
+            
+            <h3>修复方案</h3>
+            <p>修改判断条件为：<code>if (this.config.watch && this.config.watch.enabled)</code></p>
+            
+            <h3>现在的行为</h3>
+            <ul>
+                <li><code>node build/build.js</code> - 执行单次构建，不进入监听模式</li>
+                <li><code>node build/build.js --watch</code> - 启用监听模式</li>
+                <li><code>npm run build:watch</code> - 启用监听模式</li>
+            </ul>
+        </div>
+
+        <div style="height: 100px;"></div>
+        <p>滚动页面测试滚动条控制功能...</p>
+    </div>
+
+    <script>
+        // 更新滑块值显示
+        document.getElementById('speed-slider').addEventListener('input', function(e) {
+            document.getElementById('speed-value').textContent = e.target.value;
+        });
+        
+        document.getElementById('opacity-slider').addEventListener('input', function(e) {
+            document.getElementById('opacity-value').textContent = e.target.value + '%';
+        });
+        
+        document.getElementById('delay-slider').addEventListener('input', function(e) {
+            document.getElementById('delay-value').textContent = e.target.value + 'ms';
+        });
+    </script>
+</body>
+</html>

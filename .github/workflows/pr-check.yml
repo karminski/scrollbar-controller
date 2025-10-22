@@ -1,0 +1,103 @@
+name: Pull Request Check
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+    types: [opened, synchronize, reopened]
+
+env:
+  NODE_ENV: development
+
+jobs:
+  pr-validation:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci --prefer-offline --no-audit
+      
+      - name: Lint code
+        run: |
+          echo "🔍 Running ESLint..."
+          npm run lint
+          echo "✅ Linting passed"
+      
+      - name: Check code formatting
+        run: |
+          echo "🎨 Checking code formatting..."
+          npm run format:check
+          echo "✅ Code formatting is correct"
+      
+      - name: Run tests
+        run: |
+          echo "🧪 Running tests..."
+          npm test
+          echo "✅ Tests passed"
+      
+      - name: Build validation
+        run: |
+          echo "🔨 Validating build process..."
+          npm run clean
+          npm run build
+          
+          # Validate build output
+          if [ ! -f "dist/scrollbar-control.user.js" ]; then
+            echo "❌ Build validation failed - no userscript generated"
+            exit 1
+          fi
+          
+          echo "✅ Build validation passed"
+      
+      - name: PR Summary
+        run: |
+          echo "## 🔍 Pull Request Validation Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Checks Passed" >> $GITHUB_STEP_SUMMARY
+          echo "- Code linting" >> $GITHUB_STEP_SUMMARY
+          echo "- Code formatting" >> $GITHUB_STEP_SUMMARY
+          echo "- Tests execution" >> $GITHUB_STEP_SUMMARY
+          echo "- Build validation" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 PR Details" >> $GITHUB_STEP_SUMMARY
+          echo "- **PR Number**: #${{ github.event.number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Source Branch**: \`${{ github.head_ref }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Target Branch**: \`${{ github.base_ref }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Author**: @${{ github.event.pull_request.user.login }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🎉 **This PR is ready for review!**" >> $GITHUB_STEP_SUMMARY
+
+  pr-failure:
+    runs-on: ubuntu-latest
+    needs: pr-validation
+    if: failure()
+    
+    steps:
+      - name: PR Failure Summary
+        run: |
+          echo "## ❌ Pull Request Validation Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🚨 Issues Found" >> $GITHUB_STEP_SUMMARY
+          echo "The pull request validation has failed. Please check the job logs for details." >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔧 Common Issues" >> $GITHUB_STEP_SUMMARY
+          echo "- **Linting errors**: Fix ESLint warnings and errors" >> $GITHUB_STEP_SUMMARY
+          echo "- **Formatting issues**: Run \`npm run format\` to fix formatting" >> $GITHUB_STEP_SUMMARY
+          echo "- **Test failures**: Ensure all tests pass locally" >> $GITHUB_STEP_SUMMARY
+          echo "- **Build errors**: Check that the build script runs successfully" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📋 Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "1. Review the failed job logs above" >> $GITHUB_STEP_SUMMARY
+          echo "2. Fix the identified issues locally" >> $GITHUB_STEP_SUMMARY
+          echo "3. Test your changes with \`npm run validate\`" >> $GITHUB_STEP_SUMMARY
+          echo "4. Push your fixes to update this PR" >> $GITHUB_STEP_SUMMARY

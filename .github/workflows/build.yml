@@ -1,0 +1,245 @@
+name: Build Userscript
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allow manual triggering
+
+env:
+  NODE_ENV: production
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+      fail-fast: false  # Continue with other versions if one fails
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for better build info
+      
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: |
+          echo "Installing dependencies..."
+          npm ci --prefer-offline --no-audit
+          echo "Dependencies installed successfully"
+      
+      - name: Validate project structure
+        run: |
+          echo "Validating project structure..."
+          if [ ! -f "package.json" ]; then
+            echo "❌ package.json not found"
+            exit 1
+          fi
+          if [ ! -d "src" ]; then
+            echo "❌ src directory not found"
+            exit 1
+          fi
+          if [ ! -f "build/build.js" ]; then
+            echo "❌ build script not found"
+            exit 1
+          fi
+          echo "✅ Project structure validation passed"
+      
+      - name: Lint code
+        run: |
+          echo "Running ESLint..."
+          npm run lint
+          echo "✅ Linting passed"
+      
+      - name: Format check
+        run: |
+          echo "Checking code formatting..."
+          npm run format:check
+          echo "✅ Code formatting check passed"
+      
+      - name: Run tests
+        run: |
+          echo "Running tests..."
+          npm test
+          echo "✅ Tests completed"
+      
+      - name: Clean previous builds
+        run: |
+          echo "Cleaning previous builds..."
+          npm run clean
+          echo "✅ Clean completed"
+      
+      - name: Build userscript
+        run: |
+          echo "Building userscript..."
+          npm run build
+          echo "✅ Build completed"
+      
+      - name: Validate build output
+        run: |
+          echo "Validating build output..."
+          if [ ! -d "dist" ]; then
+            echo "❌ dist directory not created"
+            exit 1
+          fi
+          if [ ! -f "dist/scrollbar-control.user.js" ]; then
+            echo "❌ userscript file not generated"
+            ls -la dist/ || echo "dist directory is empty"
+            exit 1
+          fi
+          
+          # Check file size (should be reasonable)
+          file_size=$(stat -c%s "dist/scrollbar-control.user.js")
+          if [ $file_size -lt 1000 ]; then
+            echo "❌ Generated file seems too small ($file_size bytes)"
+            exit 1
+          fi
+          
+          # Check for userscript header
+          if ! head -n 20 "dist/scrollbar-control.user.js" | grep -q "// ==UserScript=="; then
+            echo "❌ Userscript header not found"
+            exit 1
+          fi
+          
+          echo "✅ Build validation passed"
+          echo "📊 Build statistics:"
+          echo "   File size: $file_size bytes"
+          echo "   Lines: $(wc -l < dist/scrollbar-control.user.js)"
+          ls -la dist/
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: userscript-node-${{ matrix.node-version }}
+          path: |
+            dist/
+            build/
+            !build/node_modules
+          retention-days: 30
+          compression-level: 6
+      
+      - name: Upload build logs on failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: build-logs-node-${{ matrix.node-version }}-${{ github.run_number }}
+          path: |
+            npm-debug.log*
+            .npm/_logs/
+          retention-days: 7
+          if-no-files-found: ignore
+
+  # Job to handle build artifacts and create releases
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: success() && github.ref == 'refs/heads/main'
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Download all build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: userscript-node-*
+          merge-multiple: true
+          path: ./artifacts
+      
+      - name: Prepare release artifacts
+        run: |
+          echo "Preparing release artifacts..."
+          mkdir -p release
+          
+          # Copy the userscript from the first successful build
+          if [ -f "./artifacts/dist/scrollbar-control.user.js" ]; then
+            cp "./artifacts/dist/scrollbar-control.user.js" "./release/"
+            echo "✅ Userscript copied to release directory"
+          else
+            echo "❌ No userscript found in artifacts"
+            exit 1
+          fi
+          
+          # Create build info
+          cat > release/build-info.txt << EOF
+          Build Information
+          =================
+          Commit: ${{ github.sha }}
+          Branch: ${{ github.ref_name }}
+          Build Date: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          Workflow Run: ${{ github.run_number }}
+          Actor: ${{ github.actor }}
+          
+          Files:
+          $(ls -la release/)
+          EOF
+          
+          echo "📋 Release artifacts prepared:"
+          ls -la release/
+      
+      - name: Upload consolidated release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: scrollbar-controller-release-${{ github.run_number }}
+          path: release/
+          retention-days: 90
+      
+      - name: Create build summary
+        run: |
+          echo "## 🎉 Build Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📦 Artifacts Generated" >> $GITHUB_STEP_SUMMARY
+          echo "- **Userscript**: \`scrollbar-control.user.js\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Build Info**: \`build-info.txt\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Build Details" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch**: \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Run Number**: \`${{ github.run_number }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "release/scrollbar-control.user.js" ]; then
+            file_size=$(stat -c%s "release/scrollbar-control.user.js")
+            line_count=$(wc -l < "release/scrollbar-control.user.js")
+            echo "### 📈 File Statistics" >> $GITHUB_STEP_SUMMARY
+            echo "- **Size**: ${file_size} bytes" >> $GITHUB_STEP_SUMMARY
+            echo "- **Lines**: ${line_count}" >> $GITHUB_STEP_SUMMARY
+          fi
+
+  # Job to handle build failures and notifications
+  notify-failure:
+    needs: build
+    runs-on: ubuntu-latest
+    if: failure()
+    
+    steps:
+      - name: Create failure summary
+        run: |
+          echo "## ❌ Build Failed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔍 Failure Details" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: \`${{ github.sha }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch**: \`${{ github.ref_name }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Run Number**: \`${{ github.run_number }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "- **Actor**: \`${{ github.actor }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🛠️ Troubleshooting" >> $GITHUB_STEP_SUMMARY
+          echo "1. Check the build logs for detailed error messages" >> $GITHUB_STEP_SUMMARY
+          echo "2. Verify that all dependencies are properly installed" >> $GITHUB_STEP_SUMMARY
+          echo "3. Ensure the source code passes linting and formatting checks" >> $GITHUB_STEP_SUMMARY
+          echo "4. Check that the build script can access all required files" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📋 Next Steps" >> $GITHUB_STEP_SUMMARY
+          echo "- Review the error logs in the failed job" >> $GITHUB_STEP_SUMMARY
+          echo "- Download build logs artifact if available" >> $GITHUB_STEP_SUMMARY
+          echo "- Fix the issues and push a new commit" >> $GITHUB_STEP_SUMMARY
