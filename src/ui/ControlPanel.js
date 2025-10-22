@@ -119,6 +119,10 @@ export class ControlPanel {
                 optionsContainer.appendChild(button);
             });
 
+            // 创建自动滚动控制区域
+            const autoScrollSection = this.createAutoScrollSection();
+            optionsContainer.appendChild(autoScrollSection);
+
             // 将内容添加到面板
             this.element.appendChild(title);
             this.element.appendChild(optionsContainer);
@@ -127,6 +131,107 @@ export class ControlPanel {
         } catch (error) {
             console.error('[ControlPanel] 创建面板内容失败:', error);
         }
+    }
+
+    /**
+     * 创建自动滚动控制区域
+     * @returns {Element} 自动滚动控制容器
+     */
+    createAutoScrollSection() {
+        const section = document.createElement('div');
+        section.className = 'auto-scroll-section';
+        section.style.cssText = `
+            margin-top: 16px !important;
+            padding-top: 16px !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        `;
+
+        // 创建自动滚动标题
+        const title = document.createElement('div');
+        title.style.cssText = `
+            font-weight: 500 !important;
+            color: #374151 !important;
+            margin-bottom: 12px !important;
+            font-size: 14px !important;
+        `;
+        title.textContent = '自动滚动';
+
+        // 创建开关按钮
+        const toggleButton = document.createElement('button');
+        toggleButton.id = 'auto-scroll-toggle';
+        toggleButton.style.cssText = `
+            width: 100% !important;
+            padding: 10px 12px !important;
+            margin-bottom: 12px !important;
+            border: 2px solid #e5e7eb !important;
+            border-radius: 6px !important;
+            background: #f9fafb !important;
+            color: #374151 !important;
+            cursor: pointer !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+            transition: all 0.2s ease !important;
+            box-sizing: border-box !important;
+        `;
+        toggleButton.textContent = '开始自动滚动';
+
+        // 创建速度控制滑块
+        const speedSlider = this.createSliderControl({
+            label: '滚动速度',
+            min: 1,
+            max: 10,
+            value: 3,
+            step: 1,
+            onChange: (value) => {
+                this.eventBus.emit('ui:speed-change', { speed: value });
+            }
+        });
+
+        // 添加开关按钮事件
+        let isAutoScrolling = false;
+        toggleButton.addEventListener('click', () => {
+            isAutoScrolling = !isAutoScrolling;
+            
+            if (isAutoScrolling) {
+                toggleButton.textContent = '停止自动滚动';
+                toggleButton.style.background = '#fef3c7';
+                toggleButton.style.borderColor = '#f59e0b';
+                toggleButton.style.color = '#92400e';
+                this.eventBus.emit('ui:auto-scroll-start');
+            } else {
+                toggleButton.textContent = '开始自动滚动';
+                toggleButton.style.background = '#f9fafb';
+                toggleButton.style.borderColor = '#e5e7eb';
+                toggleButton.style.color = '#374151';
+                this.eventBus.emit('ui:auto-scroll-stop');
+            }
+        });
+
+        // 监听自动滚动状态变化
+        this.eventBus.on('auto-scroll:start', () => {
+            isAutoScrolling = true;
+            toggleButton.textContent = '停止自动滚动';
+            toggleButton.style.background = '#fef3c7';
+            toggleButton.style.borderColor = '#f59e0b';
+            toggleButton.style.color = '#92400e';
+        });
+
+        this.eventBus.on('auto-scroll:stop', () => {
+            isAutoScrolling = false;
+            toggleButton.textContent = '开始自动滚动';
+            toggleButton.style.background = '#f9fafb';
+            toggleButton.style.borderColor = '#e5e7eb';
+            toggleButton.style.color = '#374151';
+        });
+
+        // 组装元素
+        section.appendChild(title);
+        section.appendChild(toggleButton);
+        section.appendChild(speedSlider);
+
+        return section;
     }
 
     /**

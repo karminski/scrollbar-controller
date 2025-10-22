@@ -252,6 +252,19 @@ class ScrollbarControllerApp {
             }
         });
 
+        // UI自动滚动控制事件
+        eventBus.on('ui:auto-scroll-start', () => {
+            if (autoScrollManager && typeof autoScrollManager.startAutoScroll === 'function') {
+                autoScrollManager.startAutoScroll();
+            }
+        });
+
+        eventBus.on('ui:auto-scroll-stop', () => {
+            if (autoScrollManager && typeof autoScrollManager.stopAutoScroll === 'function') {
+                autoScrollManager.stopAutoScroll();
+            }
+        });
+
         // 键盘处理器与自动滚动管理器的通信
         eventBus.on('keyboard:toggle', () => {
             if (autoScrollManager) {
