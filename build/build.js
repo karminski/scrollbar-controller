@@ -184,7 +184,7 @@ class Builder {
 
         // 启动监听
         const watchStarted = this.fileWatcher.start();
-        
+
         if (!watchStarted) {
             BuildUtils.log('文件监听不可用，执行单次构建后退出', 'warn');
             return;
