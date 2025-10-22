@@ -14,10 +14,10 @@
     "lint:fix": "eslint src/ build/ --fix",
     "format": "prettier --write \"src/**/*.js\" \"build/**/*.js\"",
     "format:check": "node -e \"console.log('Format check passed - using ESLint for code style')\"",
-    "clean": "rimraf dist/ coverage/",
-    "clean:all": "npm run clean && rimraf node_modules/",
+    "clean": "node build/clean.js",
+    "clean:all": "npm run clean && rm -rf node_modules/",
     "validate": "npm run lint && npm run format:check && npm run test",
-    "prepare": "npm run clean && npm run build",
+
     "start": "npm run build:dev && echo 'Built development version. Check dist/ folder.'",
     "watch": "npm run build:watch",
     "dev:no-watch": "node build/dev.js --no-watch",
